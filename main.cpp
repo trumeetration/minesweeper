@@ -48,5 +48,5 @@ int main()
             continue;
         }
     }
-    game.Start();
+    game.Start(dim_x, dim_y, bombCount);
 }
