@@ -30,3 +30,34 @@ void Game::drawField() {
             cout << "_";
     }
 }
+
+bool Game::isRunning() {
+    return isPlaying;
+}
+
+void Game::renderAction() {
+    int action;
+    while (true) {
+        cout << "\nAction (1 - open, 2 - mark/unmark, 3 - quit): ";
+        cin >> action;
+        if (action != 1 && action != 2 && action != 3) {
+            cout << "\nWrong choice!";
+            continue;
+        }
+        break;
+    }
+    int x;
+    int y;
+    if (action == 1) {
+        while (true) {
+            cout << "\nX: ";
+            cin >> x;
+            cout << "\nY: ";
+            cin >> y;
+            if (x > dim_x || y > dim_y) {
+                cout << "\nOut of range!";
+                continue;
+            }
+        }
+    }
+}
