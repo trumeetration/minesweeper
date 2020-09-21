@@ -1,8 +1,15 @@
 #include "Field.h"
 
+enum FinishReason {
+    BOOM,
+    QUIT,
+    END
+};
+
 class Game {
     private:
         Field* field;
+        int finishReason;
         bool isPlaying;
         Point koord;
         int dim_x, dim_y, bCount;
