@@ -48,16 +48,31 @@ void Game::renderAction() {
     }
     int x;
     int y;
-    if (action == 1) {
+    if (action == OPENED || action == MARKED) {
         while (true) {
             cout << "\nX: ";
             cin >> x;
             cout << "\nY: ";
             cin >> y;
-            if (x > dim_x || y > dim_y) {
+            if (!(x >= 0 && x < dim_x && y >= 0 && y < dim_y)) {
                 cout << "\nOut of range!";
                 continue;
             }
+            break;
         }
+        if (action == OPENED) {
+            if (field->OpenCell(Point {x, y}) == false) {
+                //Мина! Конец
+                isPlaying = false;
+                finishReason = BOOM;
+            }
+        }
+        if (action == MARKED) {
+            field->MarkCell(Point {x, y});
+        }
+    }
+    if (action == 3) {
+        isPlaying = false;
+        finishReason = QUIT;
     }
 }
