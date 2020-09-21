@@ -17,7 +17,7 @@ class Field {
         int size_Y = 0;
     public:
         Field(int bCount, int dimension_x, int dimension_y);
-        void OpenCell(Point koord);
+        bool OpenCell(Point koord);
         void MarkCell(Point koord);
         void ShowCell(Point koord);
 };
