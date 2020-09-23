@@ -1,7 +1,9 @@
 #include "Game.h"
 
 void Game::Start(int dimension_x, int dimension_y, int bombCount) {
+    cout << "1" << endl; system("pause");
     field = new Field(dimension_x, dimension_y, bombCount);
+    cout << "2" << endl; system("pause");
     this->dim_x = dimension_x;
     this->dim_y = dimension_y;
     this->bCount = bombCount;
@@ -15,19 +17,19 @@ void Game::Start(int dimension_x, int dimension_y, int bombCount) {
 }
 
 void Game::drawField() {
+    cout << endl << "  ";
+    for (int i = 0; i < dim_x; i++)
+        cout << i << " ";
+        cout << endl;
     for (int i = 0; i < dim_y; i++)
     {
-        cout << "|";
+        cout << i << " ";
         for (int j = 0; j < dim_x; j++)
         {
-            koord.x = j;
-            koord.y = i;
-            field->ShowCell(koord);
+            cout << field->showCell(koord = {j, i});
             cout << "|";
         }
         cout << endl;
-        for (int j = 0; j < dim_x + 2; j++)
-            cout << "_";
     }
 }
 
@@ -75,4 +77,15 @@ void Game::renderAction() {
         isPlaying = false;
         finishReason = QUIT;
     }
+}
+
+int Game::menu() {
+    int ch;
+    cout << endl << "1 - 8x8 and 10 bombs" << endl
+    << "1 - 16x16 and 40 bombs" << endl
+    << "1 - 16x30 and 99 bombs" << endl
+    << "4 - custom" << endl
+    << "Choice: ";
+    cin >> ch;
+    return ch;
 }

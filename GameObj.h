@@ -8,7 +8,7 @@ enum State {
 
 class GameObj {
     public:
-        virtual void showObj(State state);
+        virtual std::string showObj(State state);
 };
 
 class Cell {
@@ -21,19 +21,20 @@ class Cell {
         void setState(State state);
         void setObj(GameObj* obj);
         void markCell();
-        void openCell();
-        void printCell();
+        bool openCell();
+        std::string printCell();
 };
 
-class Bomb : GameObj {
+class Bomb : public GameObj {
     public:
-        void showObj(State state);
+        std::string showObj(State state);
 };
 
-class Hint : GameObj {
+class Hint : public GameObj {
     private:
-        int value = 10;
+        int value = 0;
     public:
+        std::string showObj(State state); 
         int getValue();
         void setValue(int value);
 };

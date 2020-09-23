@@ -29,7 +29,7 @@ int main()
             bombCount = 99;
             break;
         }
-        else if (action == 1)
+        else if (action == 4)
         {
             cout << "\nDimension X: ";
             cin >> dim_x;
@@ -44,6 +44,7 @@ int main()
         }
         else
         {
+            system("cls");
             cout << "\nWrong choice!" << endl;
             continue;
         }
