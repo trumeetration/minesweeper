@@ -39,12 +39,9 @@ Field::Field(int dimension_x, int dimension_y, int bCount) {
             cellField[i][j].setObj(new Hint);
             cellField[i][j].setState(CLOSED);
         }
-    cout << "4" << endl; system("pause");
     for (int i = 0; i < bombCount;) {
         Point bPoint = {uid_x(gen), uid_y(gen)};
-        cout << endl << "Generated koord [" << bPoint.x << ";" << bPoint.y << "]";
         if (typeid(cellField[bPoint.y][bPoint.x].getObj()) == typeid(Bomb)) {
-            cout << endl << "Exists [" << bPoint.x << ";" << bPoint.y << "]";
             continue;
         }
         cellField[bPoint.y][bPoint.x].setObj(new Bomb);
