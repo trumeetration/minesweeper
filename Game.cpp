@@ -1,14 +1,12 @@
 #include "Game.h"
 
 void Game::Start(int dimension_x, int dimension_y, int bombCount) {
-    cout << "1" << endl; system("pause");
     field = new Field(dimension_x, dimension_y, bombCount);
-    cout << "2" << endl; system("pause");
     this->dim_x = dimension_x;
     this->dim_y = dimension_y;
     this->bCount = bombCount;
     drawField();
-    while (isPlaying)
+    while (isRunning())
     {
         renderAction();
         drawField();
@@ -17,13 +15,13 @@ void Game::Start(int dimension_x, int dimension_y, int bombCount) {
 }
 
 void Game::drawField() {
-    cout << endl << "  ";
+    cout << endl << "   ";
     for (int i = 0; i < dim_x; i++)
         cout << i << " ";
-        cout << endl;
+    cout << endl;
     for (int i = 0; i < dim_y; i++)
     {
-        cout << i << " ";
+        cout << i << " |";
         for (int j = 0; j < dim_x; j++)
         {
             cout << field->showCell(koord = {j, i});
@@ -63,7 +61,9 @@ void Game::renderAction() {
             break;
         }
         if (action == OPENED) {
-            if (field->OpenCell(Point {x, y}) == false) {
+            bool tmp = field->OpenCell(Point {x, y});
+            cout << endl << tmp << endl; 
+            if (tmp == false) {
                 //Мина! Конец
                 isPlaying = false;
                 finishReason = BOOM;
