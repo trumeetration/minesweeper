@@ -1,5 +1,6 @@
 #include "GameObj.h"
 
+
 std::string GameObj::showObj(State state) {
     if (state == CLOSED)
         return "*";
@@ -45,7 +46,7 @@ void Cell::markCell() {
 
 bool Cell::openCell() {
     state = OPENED;
-    if (typeid(obj) == typeid(Bomb))
+    if (typeid(*obj) == typeid(Bomb))
         return false;
     else return true;
 }
